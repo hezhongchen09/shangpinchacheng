@@ -1,0 +1,23 @@
+{
+    "name": "shangpinchacheng",
+    "description": "Shang Pin Cha Cheng",
+    "type": "project",
+    "authors": [
+        {
+            "name": "He Zhongchen",
+            "email": "hezhongchen123@126.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Shangpinchacheng\\": "app/src"
+        }
+    },
+    "require": {
+        "slim/slim": "^3.0@beta",
+        "slim/twig-view": "^1.1",
+        "slim/flash": "^0.1.0",
+        "monolog/monolog": "^1.13",
+        "doctrine/orm": "~2.5"
+    }
+}
