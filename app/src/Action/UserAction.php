@@ -4,7 +4,7 @@ namespace Shangpinchacheng\Action;
 use Slim\Views\Twig;
 use Psr\Log\LoggerInterface;
 
-final class HomeAction{
+final class UserAction{
     private $view;
     private $logger;
 
@@ -13,10 +13,9 @@ final class HomeAction{
         $this->logger = $logger;
     }
 
-    public function dispatch($request, $response, $args){
+    public function showLoginPage($request, $response, $args){
         $this->logger->info("Home page action dispatched");
-        
-        $this->view->render($response, 'home.twig');
-        return $response;
+
+        $this->view->render($response, 'login.twig');
     }
 }

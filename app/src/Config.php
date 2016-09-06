@@ -1,19 +1,21 @@
 <?php
 namespace Shangpinchacheng;
 
-use Slim\App;
-use Slim\Views\Twig;
+use \Slim\App;
+use \Slim\Views\Twig;
 use Slim\Views\TwigExtension;
-use Slim\Flash\Messages;
+use Twig_Extension_Debug;
+use \Slim\Flash\Messages;
 
-use Monolog\logger;
-use Monolog\Processor\UidProcessor;
-use Monolog\Handler\StreamHandler;
+use \Monolog\Logger;
+use \Monolog\Processor\UidProcessor;
+use \Monolog\Handler\StreamHandler;
 
-use Doctrine\ORM\Tools\Setup;
-use Doctrine\ORM\EntityManager;
+use \Doctrine\ORM\Tools\Setup;
+use \Doctrine\ORM\EntityManager;
 
-use Shangpinchacheng\Action\HomeAction;
+use Shangpinchacheng\Action\UserAction;
+use Shangpinchacheng\Action\ProductAction;
 use Shangpinchacheng\Action\ImageAction;
 
 use Shangpinchacheng\Resource\ImageResource;
@@ -32,9 +34,11 @@ class Config {
 			$settings = $c->get('settings');
 			$view = new Twig($settings['view']['template_path'], $settings['view']['twig']);
 
-			$view->addExtension(new TwigExtension($c->get('router'), $c->get('request')->getUri()));
-			$view->addExtension(new Twig_Extension_Debug());
+			$basePath = rtrim(str_ireplace('index.php', '', $c->get('request')->getUri()->getBasePath()), '/');
 
+			$view->addExtension(new TwigExtension($c->get('router'), $basePath));
+			$view->addExtension(new Twig_Extension_Debug());
+			
 			return $view;
 		};
 
@@ -47,6 +51,7 @@ class Config {
 			$logger = new Logger($settings['logger']['name']);
 			$logger->pushProcessor(new UidProcessor());
 			$logger->pushHandler(new StreamHandler($settings['logger']['path'], Logger::DEBUG));
+			
 			return $logger;
 		};
 
@@ -64,8 +69,12 @@ class Config {
 	}
 
 	public function setAction(){
-		$this->container['Action\HomeAction'] = function ($c) {
-			return new HomeAction($c->get('view'), $c->get('logger'));
+		$this->container['Action\UserAction'] = function ($c) {
+			return new UserAction($c->get('view'), $c->get('logger'));
+		};
+
+		$this->container['Action\ProductAction'] = function ($c) {
+			return new ProductAction($c->get('view'), $c->get('logger'));
 		};
 
 		$this->container['Action\ImageAction'] = function ($c) {
@@ -75,6 +84,14 @@ class Config {
 	}
 
 	public function setRouter(){
+		$this->app->get('/admin/login', 'Action\UserAction:showLoginPage');
+		$this->app->get('/admin/change-password', 'Action\UserAction:showLoginPage');
+
+		$this->app->get('/admin', 'Action\ProductAction:listProduct');
+		$this->app->get('/admin/product/list', 'Action\ProductAction:listProduct');
+		$this->app->get('/admin/product/view/{product_id}', 'Action\UserAction:showLoginPage');
+		$this->app->get('/admin/product/add', 'Action\ProductAction:addProduct');
+
 		$this->app->get('/api/images', 'Action\ImageAction:fetch');
 		$this->app->get('/api/images/{name}', 'Action\ImageAction:fetchOne');
 	}

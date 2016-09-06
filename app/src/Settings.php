@@ -6,7 +6,7 @@ class Settings {
 		return [
 			'settings' => [
 				'view' => [
-					'template_path' => __DIR__ . '/templates',
+					'template_path' => __DIR__ . '/../templates',
 					'twig' => [
 						'cache' => __DIR__ . '/../../cache/twig',
 						'debug' => true,
@@ -15,7 +15,7 @@ class Settings {
 				],
 
 				'logger' => [
-					'name' => 'app',
+					'name' => 'shangpinchacheng',
 					'path' => __DIR__ . '/../../log/app.log'
 				],
 

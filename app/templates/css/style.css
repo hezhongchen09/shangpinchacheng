@@ -1,0 +1,48 @@
+a {
+    text-decoration: none;
+    color: #258cff;
+}
+
+a:focus, a:hover {
+    text-decoration: none;
+}
+
+.dashboard-header {
+    min-height: 50px;
+    padding-top: 10px;
+    margin: 0 auto 20px;
+    background-color: #258cff;
+}
+
+.dashboard-header a {
+    color: #fff;
+    font-size: 24px;
+    font-weight: 600;
+}
+
+.login-form {
+    max-width: 320px;
+    margin: 60px auto;
+}
+
+.login-form input[type="submit"] {
+    width: 100%;
+    margin: 20px 0;
+    background-color: #51D696;
+    height: 48px;
+    padding: 0 50px;
+    color: #FFF;
+    text-align: center;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 48px;
+    outline: 0;
+    display: inline-block;
+    border: 0;
+    border-radius: 4px;
+}
+
+.login-form input[type="text"], .login-form input[type="password"] {
+    padding: 10px 15px;
+    height: auto;
+}

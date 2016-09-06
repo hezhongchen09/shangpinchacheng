@@ -1,7 +1,7 @@
 <?php
 require_once 'vendor/autoload.php';
 
-use Slim\App;
+use \Slim\App;
 
 use Shangpinchacheng\Settings;
 use Shangpinchacheng\Config;

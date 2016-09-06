@@ -1,0 +1,15 @@
+{
+  "name": "shangpinchacheng",
+  "description": "Shang Pin Cha Cheng",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "^3.3.7"
+  }
+}

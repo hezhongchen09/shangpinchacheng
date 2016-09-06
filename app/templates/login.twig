@@ -1,0 +1,50 @@
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <title>上品茶城管理系统</title>
+        <link rel="icon" href="" type="image/x-icon">
+        <link href='/shangpinchacheng/app/templates/bower_components/bootstrap/dist/css/bootstrap.min.css' rel='stylesheet' type='text/css'>
+        <link href='/shangpinchacheng/app/templates/css/style.css' rel='stylesheet' type='text/css'>
+        
+        <script src='/shangpinchacheng/app/templates/bower_components/jquery/dist/jquery.min.js'></script>
+    </head>
+    <body>
+        <header class="dashboard-header">
+            <div class="container">
+                <div class="col-xs-12">
+                    <a href="/">上品茶城管理系统</a>
+                </div>
+            </div>
+        </header>
+
+        <div class="container">
+            <div class="col-xs-12">
+                <section>
+                    <div class="login">
+                        <form class="login-form" id="new_user" action="/login" accept-charset="UTF-8" method="post">
+                            <div class="row">
+                                <div class="form-group col-sm-12">
+                                    <input placeholder="User" class="form-control" autofocus="autofocus" type="text">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group col-sm-12">
+                                    <input placeholder="Password" class="form-control" autocomplete="off" type="password">
+                                </div>
+                            </div>
+                            <div class="actions">
+                                <input type="submit" name="commit" value="Log in" class="primary button huge">
+                                <div style="padding-top: 20px; text-align: center;">
+                                    <a href="/password">Forgot password</a>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </body>
+</html>
+        
