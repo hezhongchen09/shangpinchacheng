@@ -9,4 +9,8 @@ abstract class AbstractResource{
 	public function __construct(EntityManager $entityManager){
 		$this->entityManager = $entityManager;
 	}
+
+	public function getEntityManager(){
+        return $this->entityManager;
+    }
 }

@@ -7,9 +7,9 @@ use Shangpinchacheng\Entity;
 
 /**
  * @Mapping\Entity
- * @Mapping\Table(name="user", uniqueConstraints={@Mapping\UniqueConstraint(name="user_id", columns={"id"})}))
+ * @Mapping\Table(name="token", uniqueConstraints={@Mapping\UniqueConstraint(name="token_id", columns={"id"})}))
  */
-class User{
+class Token{
     /**
      * @Mapping\Id
      * @Mapping\Column(name="id", type="integer")
@@ -18,14 +18,19 @@ class User{
     protected $id;
 
     /**
-     * @Mapping\Column(type="string", length=100)
+     * @Mapping\Column(name="userId", type="integer")
      */
-    protected $name;
+    protected $userId;
 
     /**
      * @Mapping\Column(type="string", length=100)
      */
-    protected $password;
+    protected $token;
+
+    /**
+     * @Mapping\Column(type="string", length=100)
+     */
+    protected $expireTime;
 
     /**
      * @return array
@@ -42,20 +47,35 @@ class User{
     }
 
     /**
-     * @Mapping\return string
+     * @Mapping\return integer
      */
-    public function getName(){
-        return $this->name;
+    public function getUserId(){
+        return $this->userId;
+    }
+
+    public function setUserId($userId){
+        $this->userId = $userId;
     }
 
     /**
      * @Mapping\return string
      */
-    public function getPassword(){
-        return $this->password;
+    public function getToken(){
+        return $this->token;
     }
 
-    public function setPassword($password){
-        $this->password = $password;
+    public function setToken($token){
+        $this->token = $token;
+    }
+
+    /**
+     * @Mapping\return string
+     */
+    public function getExpireTime(){
+        return $this->expireTime;
+    }
+
+    public function setExpireTime($expireTime){
+        $this->expireTime = $expireTime;
     }
 }
