@@ -18,4 +18,10 @@ final class UserAction{
 
         $this->view->render($response, 'login.twig');
     }
+
+    public function changePassword($request, $response, $args){
+        $this->logger->info("Home page action dispatched");
+
+        $this->view->render($response, 'change-password.twig');
+    }
 }

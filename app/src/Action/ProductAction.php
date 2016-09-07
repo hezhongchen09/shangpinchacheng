@@ -24,4 +24,10 @@ final class ProductAction{
 
         $this->view->render($response, 'add-product.twig');
     }
+
+    public function viewProduct($request, $response, $args){
+        $this->logger->info("Home page action dispatched");
+
+        $this->view->render($response, 'view-product.twig');
+    }
 }

@@ -46,3 +46,44 @@ a:focus, a:hover {
     padding: 10px 15px;
     height: auto;
 }
+
+.form-checkbox-control {
+    width: 100%;
+    height: 34px;
+}
+
+.description-div {
+    position: relative;
+}
+
+::-webkit-file-upload-button {
+    line-height: 32px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background: #fff;
+    color: #333;
+}
+
+.close {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    font-size: 36px;
+}
+
+.description-div img{
+    width: 100%;
+}
+
+.form-textarea-control {
+    display: block;
+    width: 100%;
+    padding: 6px 12px;
+    font-size: 14px;
+    color: #555;
+    background-color: #fff;
+    background-image: none;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-bottom: 40px; 
+}

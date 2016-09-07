@@ -85,11 +85,11 @@ class Config {
 
 	public function setRouter(){
 		$this->app->get('/admin/login', 'Action\UserAction:showLoginPage');
-		$this->app->get('/admin/change-password', 'Action\UserAction:showLoginPage');
+		$this->app->get('/admin/change-password', 'Action\UserAction:changePassword');
 
 		$this->app->get('/admin', 'Action\ProductAction:listProduct');
 		$this->app->get('/admin/product/list', 'Action\ProductAction:listProduct');
-		$this->app->get('/admin/product/view/{product_id}', 'Action\UserAction:showLoginPage');
+		$this->app->get('/admin/product/view/{product_id}', 'Action\ProductAction:viewProduct');
 		$this->app->get('/admin/product/add', 'Action\ProductAction:addProduct');
 
 		$this->app->get('/api/images', 'Action\ImageAction:fetch');
