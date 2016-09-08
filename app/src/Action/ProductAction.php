@@ -42,7 +42,63 @@ final class ProductAction{
         $this->view->render($response, 'view-product.twig');
     }
 
+    public function listProduct($request, $response, $args){
+        $productObjList = $this->productResource->listProduct();
+        var_dump($productObjList);
+    }
+
     public function addProduct($request, $response, $args){
+        $parsedBody = $request->getParsedBody();
+
+        $thumbnailId = "";
+        $thumbnailImageObj = new Image();
+        $thumbnailImageObj->setName($parsedBody['thumbnailImage']['name']);
+        $thumbnailImageObj->setDescription($parsedBody['thumbnailImage']['description']);
+        $this->imageResource->getEntityManager()->persist($thumbnailImageObj);
+        $this->imageResource->getEntityManager()->flush();
+        $thumbnailId = $this->imageResource->getByName($parsedBody['thumbnailImage']['name'])->getId();
+
+        $imageIds = "";
+        foreach ($parsedBody['images'] as $image) {
+            $imageObj = new Image();
+
+            $imageObj->setName($image['name']);
+            $imageObj->setDescription($image['description']);
+
+            $this->imageResource->getEntityManager()->persist($imageObj);
+            $this->imageResource->getEntityManager()->flush();
+
+            if ($imageIds=="") {
+                $imageIds .= $this->imageResource->getByName($image['name'])->getId();
+            } else {
+                $imageIds .= ",".$this->imageResource->getByName($image['name'])->getId();
+            }
+        }
+
+        $productObj = new Product();
+        $productObj->setName($parsedBody['name']);
+        $productObj->setType($parsedBody['type']);
+        $productObj->setSize($parsedBody['size']);
+        $productObj->setLevel($parsedBody['level']);
+        $productObj->setOriginalPrice($parsedBody['originalPrice']);
+        $productObj->setSalePrice($parsedBody['salePrice']);
+        $productObj->setThumbnailId($thumbnailId);
+        $productObj->setShopAddress($parsedBody['shopAddress']);
+        $productObj->setImageIds($imageIds);
+        $productObj->setDescription($parsedBody['description']);
+        $productObj->setStatus($parsedBody['status']);
+        $productObj->setHot($parsedBody['hot']);
+
+        $this->productResource->getEntityManager()->persist($productObj);
+        $this->productResource->getEntityManager()->flush();
+
+        return json_encode((object)[
+            "Code" => StatusCode::Ok,
+            "Message" => ""
+        ]);
+    }
+
+    public function editProduct($request, $response, $args){
         $parsedBody = $request->getParsedBody();
 
         $thumbnailId = "";

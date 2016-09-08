@@ -143,8 +143,10 @@ class Config {
 
 		$this->app->post('/api/login', 'Action\UserAction:login');
 		$this->app->get('/api/logout', 'Action\UserAction:logout')->add($checkAuth);
-		$this->app->post('/api/change-password', 'Action\UserAction:changePassword')->add($checkAuth);
+		$this->app->put('/api/change-password', 'Action\UserAction:changePassword')->add($checkAuth);
 
+		$this->app->get('/api/product/list', 'Action\ProductAction:listProduct');
 		$this->app->post('/api/product/add', 'Action\ProductAction:addProduct');
+		$this->app->put('/api/product/edit', 'Action\ProductAction:editProduct');
 	}
 }

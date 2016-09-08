@@ -14,4 +14,8 @@ class ProductResource extends AbstractResource {
 
         return null;
     }
+
+    public function listProduct(){
+		return $this->entityManager->getRepository('Shangpinchacheng\Entity\Product')->findAll();
+    }
 }
