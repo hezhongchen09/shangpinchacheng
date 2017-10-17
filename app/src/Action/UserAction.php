@@ -92,7 +92,7 @@ final class UserAction{
             $user->setPassword(md5($parsedBody['new_password']));
 
             $this->userResource->getEntityManager()->persist($user);
-            $this->userResource->getEntityManager()->flush();0
+            $this->userResource->getEntityManager()->flush();
 
             return json_encode((object)[
                 "Code" => StatusCode::Ok,

@@ -32,7 +32,7 @@ class Settings {
 						'driver'   => 'pdo_mysql',
 						'host'     => 'localhost',
 						'dbname'   => 'shangpinchacheng',
-						'user'     => 'hezhongchen',
+						'user'     => 'root',
 						'password' => '123456'
 					]
 				]
